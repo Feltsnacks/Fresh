@@ -3,3 +3,4 @@
 .sass-cache/
 iisnode/
 web.config
+/public/index.html
