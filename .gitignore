@@ -1,7 +1,5 @@
 .DS_Store
 .nodemonignore
 .sass-cache/
-node_modules/
-public/lib
 iisnode/
 web.config
