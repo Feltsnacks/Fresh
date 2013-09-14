@@ -1,20 +1,21 @@
 <!doctype html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="site">
 	<head>
 		<title>GiftR</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	</head>
-		<body>
+		<body ng-controller="bodyController">
 			<!-- Include the header template -->
 			<div ng-include src="'header.html'"></div>
+
+			<div class="container">
+				<!-- Main content div -->
+			</div>
 
 			<!-- Include the footer template -->
 			<div ng-include src="'footer.html'"></div>
 
-			<div clas="container">
-				<!-- Main content div -->
-			</div>
-
+			<!-- Script import -->
 			<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
 			<script type="text/javascript" src="scripts/jquery.js"></script>
 			<script type="text/javascript" src="javascripts/main.js"></script>
@@ -22,6 +23,7 @@
 			<script type="text/javascript" src="scripts/carousel.js"></script>
 			<script type="text/javascript" src="scripts/collapse.js"></script>
 
+			<!-- Stylesheets -->
 			<link rel="stylesheet" type="text/css" href="css/bootstrap.css"></link>
 			<link rel="stylesheet" type="text/css" href="css/style.css"></link>
 
