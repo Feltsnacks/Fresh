@@ -28,11 +28,11 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', function(req, res){
-	res.sendfile('public/index.html');
+	res.sendfile('~/public/index.html');
 });
 
 app.get('/api', function(req, res){
-	res.sendfile('api/index.html');
+	res.sendfile('~/api/index.html');
 });
 
 http.createServer(app).listen(app.get('port'), function(){
