@@ -1,12 +1,11 @@
-var Site = angular.module('Site', []);
-
-function bodyController ($scope) {
-
+$routeProvider {
+	.when('/', {
+    	templateUrl: 'views/index.html',
+    	//controller: 'IndexCtrl'
+    })
+    .when('/login', {
+        templateUrl: 'views/login.html',
+        //controller: 'LoginCtrl'
+    })
+    .otherwise({ redirectTo: '/' });;
 }
-//Inte komplett, vet inte om det funkar heller
-Site.config(function ($routeProvider){
-	$routeProvider
-		.when('/page/:slug', {templateUrl: 'views/LoginView.html', controller:
-			'RouteController'})
-		.otherwise({redirectTo:'public/index.html'})
-});
