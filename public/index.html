@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="">
+<html lang="en" ng-app="Site">
 	<head>
 		<title>GiftR</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,8 +8,9 @@
 			<!-- Include the header template -->
 			<div ng-include src="'header.html'"></div>
 
-			<div class="container" ng-model="container">
+			<div class="container">
 				<!-- Main content div -->
+				<div ng-view=""></div>
 			</div>
 
 			<!-- Include the footer template -->

@@ -1,11 +1,28 @@
-$routeProvider {
-	.when('/', {
-    	templateUrl: 'views/index.html',
-    	//controller: 'IndexCtrl'
+var app = angular.module('Site', [])
+
+app.config(function($routeProvider){
+  $routeProvider
+    .when('/login', 
+    {
+      templateUrl: "login.html"
     })
-    .when('/login', {
-        templateUrl: 'views/login.html',
-        //controller: 'LoginCtrl'
+    .when('/listAll', 
+    {
+      templateUrl: "listAll.html"
     })
-    .otherwise({ redirectTo: '/' });;
-}
+    .when('/add', 
+    {
+      templateUrl: "add.html"
+    })
+
+  
+});
+app.controller("getListCtrl", function ($scope, $http) {
+    $http({
+        method: 'GET',
+        url: 'http://eurw125434:3000/api/lists'
+    }).success(function(data){
+        $scope.lists = data;
+    })
+  }
+);
