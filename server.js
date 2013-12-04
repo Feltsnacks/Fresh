@@ -44,7 +44,7 @@ FacebookStrategy = require('passport-facebook').Strategy;
 passport.use(new FacebookStrategy({
     clientID: '463519200411932',
     clientSecret: '1481f6153834938b3dccdfaeae884dea',
-    callbackURL: "http://localhost:3000/auth/facebook/callback"
+    callbackURL: 'http://giftr.cloudapp.net:' + app.get('port') + '/auth/facebook/callback'
   },
   function(accessToken, refreshToken, profile, done) {
     user.findOrCreate(accessToken, refreshToken, profile, function(err, loggedInUser) {
