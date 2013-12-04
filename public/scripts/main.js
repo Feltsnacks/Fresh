@@ -20,7 +20,7 @@ app.config(function($routeProvider){
 app.controller("getListCtrl", function ($scope, $http) {
     $http({
         method: 'GET',
-        url: 'http://giftr.cloudapp.net:3000/api/lists'
+        url: 'http://localhost:32069/api/lists'
     }).success(function(data){
         $scope.lists = data;
     })

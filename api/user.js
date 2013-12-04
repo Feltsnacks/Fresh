@@ -19,6 +19,14 @@ db.open(function(err, db) {
     }
 });
 
+exports.findOrCreate = function (accessToken, refreshToken, profile, done) {
+    console.log(accessToken);
+    console.log(refreshtoken);
+    console.log(profile);
+
+    return true;
+};
+
 exports.findById = function (req, res) {
     var id = req.params.id;
     console.log('Retrieving user: ' + id);
