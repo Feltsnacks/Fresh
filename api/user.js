@@ -21,7 +21,7 @@ db.open(function(err, db) {
 
 exports.findOrCreate = function (accessToken, refreshToken, profile, done) {
     console.log(accessToken);
-    console.log(refreshtoken);
+    console.log(refreshToken);
     console.log(profile);
 
     return true;
