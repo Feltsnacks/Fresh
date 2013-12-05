@@ -29,6 +29,16 @@ exports.findById = function(req, res) {
     });
 };
  
+exports.findByUser = function(req, res) {
+    var id = req.params.id;
+    console.log('Retrieving list: ' + id);
+    db.collection('lists', function(err, collection) {
+        collection.findOne({'userid':new BSON.ObjectID(id)}, function(err, item) {
+            res.send(item);
+        });
+    });
+};
+ 
 exports.findAll = function(req, res) {
     console.log('Retrieving lists');
     db.collection('lists', function(err, collection) {
