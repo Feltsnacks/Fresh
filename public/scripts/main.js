@@ -1,6 +1,6 @@
 var app = angular.module('Site', []);
 
-app.factory('srvAuth', ['$rootScope', function() {
+app.factory('srvAuth', ['$rootScope', function($rootScope) {
   return {
     watchAuthenticationStatusChange: function() {
       var _self = this;
@@ -26,7 +26,7 @@ app.factory('srvAuth', ['$rootScope', function() {
       });
       },
 
-    getUserInfo: function($rootScope) {
+    getUserInfo: function() {
 
       var _self = this;
 
@@ -37,7 +37,7 @@ app.factory('srvAuth', ['$rootScope', function() {
       });
     },
 
-    logout: function($rootScope) {
+    logout: function() {
 
       var _self = this;
 
