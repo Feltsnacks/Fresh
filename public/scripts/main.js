@@ -9,6 +9,7 @@ app.factory('srvAuth', ['$rootScope', function($rootScope) {
         if (response.status === 'connected') {
           _self.getUserInfo();
           _self.getFriends();
+          _self.getGiftrUser($rootScope.user);
           /*
            This is also the point where you should create a 
            session for the current user.
