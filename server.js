@@ -23,10 +23,10 @@ app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
-app.use(app.router);
-app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 //app.use(passport.session());
+app.use(app.router);
+app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
 if ('development' == app.get('env')) {
@@ -37,7 +37,7 @@ app.get('/', function(req, res){
 	res.sendfile('./public/index.html');
 });
 
-app.get('/api', function(req, res){
+app.get('/api', ensureAuthenticated, function(req, res){
 	res.sendfile('./api/index.html');
 });
 
@@ -90,3 +90,8 @@ app.del('/api/items/:id', items.del);
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
+
+function ensureAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) { return next(); }
+  res.redirect('/login')
+}
