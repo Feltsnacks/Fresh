@@ -52,7 +52,7 @@ app.factory('srvAuth', ['$rootScope', function($rootScope) {
       var _self = this;
       FB.api('/me/friends', function(response) {
         $rootScope.$apply(function() {
-          $rootScope.friends = response;
+          $rootScope.friends = response.data;
         });
       });
     }
