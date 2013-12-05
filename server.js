@@ -17,7 +17,6 @@ var express = require('express'),
 var FACEBOOK_APP_ID = '463519200411932';
 var FACEBOOK_APP_SECRET = '1481f6153834938b3dccdfaeae884dea';
 
-
 // Passport session setup.
 //   To support persistent login sessions, Passport needs to be able to
 //   serialize users into and deserialize users out of the session.  Typically,
@@ -53,7 +52,7 @@ passport.deserializeUser(function(obj, done) {
 passport.use(new FacebookStrategy({
     clientID: FACEBOOK_APP_ID,
     clientSecret: FACEBOOK_APP_SECRET,
-    callbackURL: "http://giftr.cloudapp.net:" + app.get('port') + "/auth/facebook/callback"
+    callbackURL: "http://giftr.cloudapp.net:3000/auth/facebook/callback"
   },
   function(accessToken, refreshToken, profile, done) {
     // asynchronous verification, for effect...
