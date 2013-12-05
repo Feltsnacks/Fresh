@@ -1,4 +1,5 @@
 
+var app = angular.module('srvAuth', []);
 app.factory('srvAuth', function() {
   return {
     watchAuthenticationStatusChange: function() {
