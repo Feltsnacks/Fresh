@@ -26,7 +26,7 @@ app.factory('srvAuth', ['$rootScope', function() {
       });
       },
 
-    getUserInfo: function() {
+    getUserInfo: function($rootScope) {
 
       var _self = this;
 
@@ -37,7 +37,7 @@ app.factory('srvAuth', ['$rootScope', function() {
       });
     },
 
-    logout: function() {
+    logout: function($rootScope) {
 
       var _self = this;
 
