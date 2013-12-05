@@ -51,7 +51,41 @@ watchAuthenticationStatusChange: function() {
       */
     }
   });
-  }}
+  }
+
+getUserInfo: function() {
+
+  var _self = this;
+
+  FB.api('/me', function(response) {
+
+    $rootScope.$apply(function() { 
+
+      $rootScope.user = _self.user = response; 
+
+    });
+
+  });
+
+}
+
+logout: function() {
+
+  var _self = this;
+
+  FB.logout(function(response) {
+
+    $rootScope.$apply(function() { 
+
+      $rootScope.user = _self.user = {}; 
+
+    }); 
+
+  });
+
+}
+
+}
 });
 
 app.run(['$rootScope', '$window', 'srvAuth', 
