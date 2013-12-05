@@ -112,6 +112,7 @@ app.get('/api', function(req, res){
 
 // API routes
 app.get('/api/users', user.findAll);
+app.get('/api/users/findorcreate/:profile', user.findOrCreate)
 app.get('/api/users/:id', user.findById);
 app.get('/api/users/:id/lists', lists.findByUser);
 app.post('/api/users', user.add);

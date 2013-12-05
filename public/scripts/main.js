@@ -28,7 +28,6 @@ app.factory('srvAuth', ['$rootScope', function($rootScope) {
       },
 
     getUserInfo: function() {
-
       var _self = this;
 
       FB.api('/me', function(response) {
@@ -54,6 +53,15 @@ app.factory('srvAuth', ['$rootScope', function($rootScope) {
         $rootScope.$apply(function() {
           $rootScope.friends = response.data;
         });
+      });
+    },
+
+    getGiftrUser: function($profile) {
+      return $http.post('/api/users/findorcreate', $profile)
+      .then(function(result) {
+        $rootScope.giftrUser = result.data;
+        //resolve the promise as the data
+        //return result.data;
       });
     }
   }

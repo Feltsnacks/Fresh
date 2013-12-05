@@ -19,22 +19,35 @@ db.open(function(err, db) {
     }
 });
 
-exports.findOrCreate = function (accessToken, refreshToken, profile, done) {
-    console.log(accessToken);
-    console.log(refreshToken);
-    console.log(profile);
-
-    return done(null, true);;
+exports.findOrCreate = function (profile) {
+    var fbid = profile.id;
+    console.log('Retrieving user: ' + fbid);
+    db.collection('users', function(err, collection) {
+        collection.findOne({'id':new BSON.ObjectID(fbid)}, function(err, item) {
+            if (err) {
+                collection.insert(user, {safe:true}, function(err, result) {
+                    if (err) {
+                        res.send({'error':'An error has occurred'});
+                    } else {
+                        console.log('Success: ' + JSON.stringify(result[0]));
+                        res.send(result[0]);
+                    }
+                });
+            } else {
+                res.send(item);
+            }
+        });
+    });
 };
 
 exports.findById = function (req, res) {
     var id = req.params.id;
     console.log('Retrieving user: ' + id);
-        db.collection('users', function(err, collection) {
-            collection.findOne({'_id':new BSON.ObjectID(id)}, function(err, item) {
-                res.send(item);
-            });
+    db.collection('users', function(err, collection) {
+        collection.findOne({'_id':new BSON.ObjectID(id)}, function(err, item) {
+            res.send(item);
         });
+    });
 };
  
 exports.findAll = function(req, res) {
