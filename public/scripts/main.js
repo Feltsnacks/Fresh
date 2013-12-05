@@ -28,8 +28,8 @@ app.controller("getListCtrl", function ($scope, $http) {
 );
 
 app.factory('srvAuth', function(){
-
-watchAuthenticationStatusChange = function() {
+return{
+watchAuthenticationStatusChange: function() {
   var _self = this;
   FB.Event.subscribe('auth.authResponseChange', function(response) {
 
@@ -51,7 +51,7 @@ watchAuthenticationStatusChange = function() {
       */
     }
   });
-  }
+  }}
 });
 
 app.run(['$rootScope', '$window', 'srvAuth', 
