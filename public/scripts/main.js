@@ -58,7 +58,7 @@ app.factory('srvAuth', ['$rootScope', function($rootScope) {
     },
 
     getGiftrUser: function($profile) {
-      $scope.$apply(function() {
+      $rootScope.$apply(function() {
         $http.post('/api/users/findorcreate', $profile)
           .then(function(result) {
             $rootScope.giftrUser = result.data;
