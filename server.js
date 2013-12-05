@@ -9,9 +9,9 @@ var express = require('express'),
     path = require('path'),
     user = require('./api/user'),
     lists = require('./api/lists'),
-    items = require('./api/items'),
-    passport = require('passport'),
-    FacebookStrategy = require('passport-facebook').Strategy;
+    items = require('./api/items');
+//    passport = require('passport'),
+//    FacebookStrategy = require('passport-facebook').Strategy;
 
 // Passport security setup
 //var FACEBOOK_APP_ID = '463519200411932';
@@ -79,8 +79,8 @@ app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(express.cookieParser());
 app.use(express.session({ secret: 'keyboard cat' }));
-app.use(passport.initialize());
-app.use(passport.session());
+//app.use(passport.initialize());
+//app.use(passport.session());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -108,7 +108,7 @@ app.get('/api', function(req, res){
 // authentication has failed.
 //app.get('/auth/facebook/callback', 
 //  passport.authenticate('facebook', { successRedirect: '/',
-                                      failureRedirect: '#/login' }));
+//                                      failureRedirect: '#/login' }));
 
 // API routes
 app.get('/api/users', user.findAll);
