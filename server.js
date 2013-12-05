@@ -48,15 +48,37 @@ passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
 
+//passport.use(new FacebookStrategy({
+//    clientID: FACEBOOK_APP_ID,
+//    clientSecret: FACEBOOK_APP_SECRET,
+//    callbackURL: 'http://giftr.cloudapp.net:' + app.get('port') + '/auth/facebook/callback'
+//  },
+//  function(accessToken, refreshToken, profile, done) {
+//    user.findOrCreate(accessToken, refreshToken, profile, function(err, loggedInUser) {
+//      if (err) { return done(err); }
+//      done(null, loggedInUser);
+//    });
+//  }
+//));
+
+// Use the FacebookStrategy within Passport.
+//   Strategies in Passport require a `verify` function, which accept
+//   credentials (in this case, an accessToken, refreshToken, and Facebook
+//   profile), and invoke a callback with a user object.
 passport.use(new FacebookStrategy({
     clientID: FACEBOOK_APP_ID,
     clientSecret: FACEBOOK_APP_SECRET,
-    callbackURL: 'http://giftr.cloudapp.net:' + app.get('port') + '/auth/facebook/callback'
+    callbackURL: "http:///giftr.cloudapp.net:" + app.get('port') + "/auth/facebook/callback"
   },
   function(accessToken, refreshToken, profile, done) {
-    user.findOrCreate(accessToken, refreshToken, profile, function(err, loggedInUser) {
-      if (err) { return done(err); }
-      done(null, loggedInUser);
+    // asynchronous verification, for effect...
+    process.nextTick(function () {
+      
+      // To keep the example simple, the user's Facebook profile is returned to
+      // represent the logged-in user.  In a typical application, you would want
+      // to associate the Facebook account with a user record in your database,
+      // and return that user instead.
+      return done(null, profile);
     });
   }
 ));
@@ -85,7 +107,7 @@ app.get('/auth/facebook', passport.authenticate('facebook'));
 // authentication has failed.
 app.get('/auth/facebook/callback', 
   passport.authenticate('facebook', { successRedirect: '/',
-                                      failureRedirect: 's' }));
+                                      failureRedirect: '#/login' }));
 
 // API routes
 app.get('/api/users', user.findAll);
