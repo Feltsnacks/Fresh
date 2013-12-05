@@ -29,8 +29,7 @@ app.controller("getListCtrl", function ($scope, $http) {
 
 app.factory('srvAuth', function(){
 
-watchLoginChange = function() {
-
+watchAuthenticationStatusChange = function() {
   var _self = this;
   FB.Event.subscribe('auth.authResponseChange', function(response) {
 
