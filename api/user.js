@@ -24,7 +24,7 @@ exports.findOrCreate = function (accessToken, refreshToken, profile, done) {
     console.log(refreshToken);
     console.log(profile);
 
-    return true;
+    return done(null, true);;
 };
 
 exports.findById = function (req, res) {
