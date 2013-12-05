@@ -13,21 +13,6 @@ var express = require('express'),
     passport = require('passport'),
     FacebookStrategy = require('passport-facebook').Strategy;
 
-var app = express();
-
-// all environments
-app.set('port', process.env.PORT || 3000);
-app.set('views', __dirname + '/views');
-//app.set('view engine', 'jade');
-app.use(express.favicon());
-app.use(express.logger('dev'));
-app.use(express.bodyParser());
-app.use(express.methodOverride());
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(app.router);
-app.use(express.static(path.join(__dirname, 'public')));
-
 // Passport security setup
 var FACEBOOK_APP_ID = '463519200411932';
 var FACEBOOK_APP_SECRET = '1481f6153834938b3dccdfaeae884dea';
@@ -82,6 +67,22 @@ passport.use(new FacebookStrategy({
     });
   }
 ));
+
+var app = express();
+
+// all environments
+app.set('port', process.env.PORT || 3000);
+app.set('views', __dirname + '/views');
+//app.set('view engine', 'jade');
+app.use(express.favicon());
+app.use(express.logger('dev'));
+app.use(express.bodyParser());
+app.use(express.methodOverride());
+app.use(express.session({ secret: 'keyboard cat' }));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(app.router);
+app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
 if ('development' == app.get('env')) {
