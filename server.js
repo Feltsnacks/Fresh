@@ -1,16 +1,17 @@
-/**
+  /**
  * Module dependencies.
  */
 
-var express = require('express');
-var routes = require('./routes');
-var user = require('./routes/user');
-var http = require('http');
-var path = require('path'),
+var express = require('express'),
+    routes = require('./routes'),
+    user = require('./routes/user'),
+    http = require('http'),
+    path = require('path'),
     user = require('./api/user'),
     lists = require('./api/lists'),
-    items = require('./api/items');    
-var passport = require('passport');
+    items = require('./api/items'),
+    passport = require('passport'),
+    FacebookStrategy = require('passport-facebook').Strategy;
 
 var app = express();
 
@@ -24,6 +25,8 @@ app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(passport.initialize());
+//app.use(passport.session());
 
 // development only
 if ('development' == app.get('env')) {
@@ -38,9 +41,7 @@ app.get('/api', function(req, res){
 	res.sendfile('./api/index.html');
 });
 
-// Passport security
-FacebookStrategy = require('passport-facebook').Strategy;
-    
+// Passport security  
 passport.use(new FacebookStrategy({
     clientID: '463519200411932',
     clientSecret: '1481f6153834938b3dccdfaeae884dea',
