@@ -19,7 +19,8 @@ db.open(function(err, db) {
     }
 });
 
-exports.findOrCreate = function (profile) {
+exports.findOrCreate = function (req, res) {
+    var profile = req.body;
     var fbid = profile.id;
     console.log('Retrieving user: ' + fbid);
     db.collection('users', function(err, collection) {
