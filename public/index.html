@@ -14,6 +14,12 @@
 				<div ng-view=""></div>
 			    <fb:login-button show-faces="true" max-rows="1" size="large"></fb:login-button>
 			    <fb:like action="like" colorscheme="light" href="http://giftr.cloudapps.net:3000" show-faces="true"></fb:like>
+
+			    <p>
+			    	<div ng-repeat="friend in friends">
+						<a href="#" class="list-group-item">{{friend.first_name}}</a>
+					</div>
+				</p>
 			</div>
 
 			<!-- Include the footer template -->

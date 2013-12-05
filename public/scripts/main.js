@@ -8,6 +8,7 @@ app.factory('srvAuth', ['$rootScope', function($rootScope) {
 
         if (response.status === 'connected') {
           _self.getUserInfo();
+          _self.getFriends();
           /*
            This is also the point where you should create a 
            session for the current user.
@@ -18,7 +19,6 @@ app.factory('srvAuth', ['$rootScope', function($rootScope) {
         } 
         else 
         {
-          alert('hello');
           /*
            The user is not logged to the app, or into Facebook:
            destroy the session on the server.
@@ -39,13 +39,21 @@ app.factory('srvAuth', ['$rootScope', function($rootScope) {
     },
 
     logout: function() {
-
       var _self = this;
 
       FB.logout(function(response) {
         $rootScope.$apply(function() { 
           $rootScope.user = _self.user = {}; 
         }); 
+      });
+    },
+
+    getFriends: function() {
+      var _self = this;
+      FB.api('/me/friends', function(response) {
+        $rootScope.$apply(function() {
+          $rootScope.friends = response;
+        });
       });
     }
   }
