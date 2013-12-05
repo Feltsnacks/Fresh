@@ -85,7 +85,7 @@ app.get('/auth/facebook', passport.authenticate('facebook'));
 // authentication has failed.
 app.get('/auth/facebook/callback', 
   passport.authenticate('facebook', { successRedirect: '/',
-                                      failureRedirect: '/login' }));
+                                      failureRedirect: 's' }));
 
 // API routes
 app.get('/api/users', user.findAll);
@@ -112,5 +112,5 @@ http.createServer(app).listen(app.get('port'), function(){
 
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
-  res.redirect('/login')
+  res.redirect('#/login')
 }
