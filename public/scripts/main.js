@@ -51,7 +51,7 @@ watchAuthenticationStatusChange: function() {
       */
     }
   });
-  }
+  },
 
 getUserInfo: function() {
 
@@ -67,7 +67,7 @@ getUserInfo: function() {
 
   });
 
-}
+},
 
 logout: function() {
 
