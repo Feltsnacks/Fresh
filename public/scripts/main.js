@@ -79,6 +79,7 @@ app.controller("getListCtrl", function ($scope, $http) {
 
 
 app.run(['$rootScope', '$window', 'srvAuth', 
+  
   function($rootScope, $window, sAuth) {
 
   $rootScope.user = {};
@@ -87,7 +88,7 @@ app.run(['$rootScope', '$window', 'srvAuth',
 
     FB.init({ 
       appId: '463519200411932', 
-      channelUrl: 'app/channel.html', 
+      channelUrl: 'channel.html', 
       status: true, 
       cookie: true, 
       xfbml: true 
