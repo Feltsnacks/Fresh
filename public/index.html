@@ -5,13 +5,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	</head>
 		<body>
+		<div ng-include src="facebook.html"></div>
 			<!-- Include the header template -->
 			<div ng-include src="'header.html'"></div>
 
 			<div class="container">
-			
-			<!-- Facebook SDK hook -->
-			<div id="fb-root"></div>
 				<!-- Main content div -->
 				<div ng-view=""></div>
 			</div>
