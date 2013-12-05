@@ -18,6 +18,7 @@ app.factory('srvAuth', ['$rootScope', function($rootScope) {
         } 
         else 
         {
+          alert('hello');
           /*
            The user is not logged to the app, or into Facebook:
            destroy the session on the server.
