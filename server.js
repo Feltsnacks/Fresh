@@ -113,6 +113,7 @@ app.get('/api', function(req, res){
 // API routes
 app.get('/api/users', user.findAll);
 app.get('/api/users/:id', user.findById);
+app.get('/api/users/:id/lists', lists.findByUser);
 app.post('/api/users', user.add);
 app.put('/api/users/:id', user.update);
 app.del('/api/users/:id', user.del);
