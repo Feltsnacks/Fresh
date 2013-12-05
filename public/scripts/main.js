@@ -94,7 +94,7 @@ app.run(['$rootScope', '$window', 'srvAuth',
       xfbml: true 
     });
 
-    sAuth.watchAuthenticationStatusChange();
+    sAuth.authResponseChange();
 
   };
 
