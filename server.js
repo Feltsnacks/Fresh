@@ -14,8 +14,8 @@ var express = require('express'),
     FacebookStrategy = require('passport-facebook').Strategy;
 
 // Passport security setup
-var FACEBOOK_APP_ID = '463519200411932';
-var FACEBOOK_APP_SECRET = '1481f6153834938b3dccdfaeae884dea';
+//var FACEBOOK_APP_ID = '463519200411932';
+//var FACEBOOK_APP_SECRET = '1481f6153834938b3dccdfaeae884dea';
 
 // Passport session setup.
 //   To support persistent login sessions, Passport needs to be able to
@@ -24,13 +24,13 @@ var FACEBOOK_APP_SECRET = '1481f6153834938b3dccdfaeae884dea';
 //   the user by ID when deserializing.  However, since this example does not
 //   have a database of user records, the complete Facebook profile is serialized
 //   and deserialized.
-passport.serializeUser(function(user, done) {
-  done(null, user);
-});
+//passport.serializeUser(function(user, done) {
+//  done(null, user);
+//});
 
-passport.deserializeUser(function(obj, done) {
-  done(null, obj);
-});
+//passport.deserializeUser(function(obj, done) {
+//  done(null, obj);
+//});
 
 //passport.use(new FacebookStrategy({
 //    clientID: FACEBOOK_APP_ID,
@@ -49,23 +49,23 @@ passport.deserializeUser(function(obj, done) {
 //   Strategies in Passport require a `verify` function, which accept
 //   credentials (in this case, an accessToken, refreshToken, and Facebook
 //   profile), and invoke a callback with a user object.
-passport.use(new FacebookStrategy({
-    clientID: FACEBOOK_APP_ID,
-    clientSecret: FACEBOOK_APP_SECRET,
-    callbackURL: "http://giftr.cloudapp.net:3000/auth/facebook/callback"
-  },
-  function(accessToken, refreshToken, profile, done) {
-    // asynchronous verification, for effect...
-    process.nextTick(function () {
+//passport.use(new FacebookStrategy({
+//    clientID: FACEBOOK_APP_ID,
+//    clientSecret: FACEBOOK_APP_SECRET,
+//    callbackURL: "http://giftr.cloudapp.net:3000/auth/facebook/callback"
+//  },
+//  function(accessToken, refreshToken, profile, done) {
+//    // asynchronous verification, for effect...
+//    process.nextTick(function () {
       
       // To keep the example simple, the user's Facebook profile is returned to
       // represent the logged-in user.  In a typical application, you would want
       // to associate the Facebook account with a user record in your database,
       // and return that user instead.
-      return done(null, profile);
-    });
-  }
-));
+//      return done(null, profile);
+//    });
+//  }
+//));
 
 var app = express();
 
@@ -93,21 +93,21 @@ app.get('/', function(req, res){
 	res.sendfile('./public/index.html');
 });
 
-app.get('/api', ensureAuthenticated, function(req, res){
+app.get('/api', function(req, res){
 	res.sendfile('./api/index.html');
 });
 
 // Redirect the user to Facebook for authentication.  When complete,
 // Facebook will redirect the user back to the application at
 //     /auth/facebook/callback
-app.get('/auth/facebook', passport.authenticate('facebook'));
+//app.get('/auth/facebook', passport.authenticate('facebook'));
 
 // Facebook will redirect the user to this URL after approval.  Finish the
 // authentication process by attempting to obtain an access token.  If
 // access was granted, the user will be logged in.  Otherwise,
 // authentication has failed.
-app.get('/auth/facebook/callback', 
-  passport.authenticate('facebook', { successRedirect: '/',
+//app.get('/auth/facebook/callback', 
+//  passport.authenticate('facebook', { successRedirect: '/',
                                       failureRedirect: '#/login' }));
 
 // API routes
@@ -133,7 +133,7 @@ http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
 
-function ensureAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) { return next(); }
-  res.redirect('#/login')
-}
+//function ensureAuthenticated(req, res, next) {
+//  if (req.isAuthenticated()) { return next(); }
+//  res.redirect('#/login')
+//}
