@@ -1,6 +1,6 @@
 var app = angular.module('Site', []);
 
-app.factory('srvAuth', ['$rootScope', function($rootScope) {
+app.factory('srvAuth', ['$http', '$rootScope', function($http, $rootScope) {
   return {
     authResponseChange: function() {
       var _self = this;
